@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
-const PORT = 80;  // Or 3000 if you're using a custom port
+const port = 80;
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
+app.get('/', (req, res) => {
+  res.send('Hello from Express!');
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
