@@ -1,9 +1,7 @@
-const AWS = require('aws-sdk');
+const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBDocumentClient, ScanCommand } = require("@aws-sdk/lib-dynamodb");
 
-AWS.config.update({
-    region: 'us-east-2',
-});
+const client = new DynamoDBClient({ region: "us-east-2" });
+const dynamoDB = DynamoDBDocumentClient.from(client);
 
-const dynamoDB = new AWS.DynamoDB.DocumentClient();
-
-module.exports = dynamoDB;
+module.exports = { dynamoDB, ScanCommand };
